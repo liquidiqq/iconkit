@@ -1,0 +1,22 @@
+#iconkit-loading-circle {
+	stroke-dasharray: 54;
+	transform-origin: center;
+	stroke-linecap: round;
+	animation: loadingcircle 1.8s ease-out infinite;
+}
+
+@keyframes loadingcircle {
+	0% {
+		stroke-dashoffset: 54;
+		transform: rotate(0deg);
+	}
+
+	60% {
+		stroke-dashoffset: 0;
+	}
+
+	100% {
+		stroke-dashoffset: -54;
+		transform: rotate(360deg);
+	}
+}

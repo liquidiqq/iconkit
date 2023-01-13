@@ -1,0 +1,5 @@
+*.html linguist-vendored
+*.css linguist-vendored
+*.md linguist-vendored
+*.json linguist-vendored
+*.config linguist-vendored
