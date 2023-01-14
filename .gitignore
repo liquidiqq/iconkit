@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
+/src/routes
 .env
 .env.*
 !.env.example
