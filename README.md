@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Icons for the Svelte ecosystem.
+Handpicked community icons for the Svelte ecosystem.
 </p>
 
 <p align="center">

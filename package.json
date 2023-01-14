@@ -1,7 +1,7 @@
 {
 	"name": "@liquidiqq/iconkit",
-	"description": "Icons for the Svelte ecosystem.",
-	"version": "1.0.1",
+	"description": "Handpicked community icons for the Svelte ecosystem.",
+	"version": "1.0.2",
 	"author": {
 		"name": "Liquidiqq"
 	},
