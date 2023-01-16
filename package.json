@@ -1,10 +1,21 @@
 {
 	"name": "@liquidiqq/iconkit",
 	"description": "Handpicked community icons for the Svelte ecosystem.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": {
 		"name": "Liquidiqq"
 	},
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"icon",
+		"icons",
+		"svg",
+		"community",
+		"open-source",
+		"typescript"
+	],
+	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
 	},

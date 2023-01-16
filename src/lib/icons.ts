@@ -1,5 +1,3 @@
-export const ssr = false;
-
 import { writable, get } from 'svelte/store';
 import type { Writable, Updater } from 'svelte/store';
 
