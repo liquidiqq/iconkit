@@ -58,7 +58,7 @@ npm install -D @liquidiqq/iconkit
 |                             |           |                   |                                                        |
 
 
-## Quick Start
+## Quick start
 
 ### Usage
 
@@ -71,13 +71,17 @@ npm install -D @liquidiqq/iconkit
 ```
 
 
-### Icon Sources and Optimizations
+### Icon sources and optimizations
 
-All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px` viewBox sizes.
+All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px`.
 
-All Heroicons are included. Search icon names [here](https://heroicons.com/) until Iconkit's website is launched. Logos are from [Ionicons](https://ionic.io/ionicons/). Logo icon names are suffixed with `-logo`. For example, `svelte-logo`:
+All Heroicons are included. You can search icon names [here](https://heroicons.com/) until Iconkit's website is launched. Logos are from [Ionicons](https://ionic.io/ionicons/). Logo icon names are suffixed with `-logo`. For example, `svelte-logo`:
 
 ```html
+<script>
+	import { Icon } from '@liquidiqq/iconkit';
+</script>
+
 <Icon name="svelte-logo">
 <Icon name="github-logo">
 <Icon name="discord-logo">
@@ -86,20 +90,20 @@ All Heroicons are included. Search icon names [here](https://heroicons.com/) unt
 
 
 ### Modes
-Modes are `outline`, `solid`, and `mini`. If not defined, default is `outline`:
+All icons have `outline`, `solid`, and `mini` modes. If not defined, default is `outline`:
 
 ```html
 <Icon name="bell-alert" mode="solid">
 ```
 
 
-### Global Stroke Width
+### Global stroke width
 
-To change the global stroke width, use the `strokeWidth` store. For auto sub and unsub use the `$` syntax:
+To change the global stroke width, use the `$strokeWidth` store. For auto sub and unsub use the `$` syntax:
 
 ```html
 <script>
-  import { strokeWidth } from '@liquidiqq/iconkit'
+  import { strokeWidth, Icon } from '@liquidiqq/iconkit'
 
   $strokeWidth = "4"
 </script>
@@ -110,20 +114,24 @@ To change the global stroke width, use the `strokeWidth` store. For auto sub and
 This will change all icons' stroke width across the app. It gives you the flexibility to match your theme aesthetics. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`.
 
 
-### Single Icon Stroke Width
+### Single icon stroke width
 
 To change a single icon's stroke width use the `strokewidth` prop, this will only change the current icon's stroke width:
 
 ```html
+<script>
+	import { Icon } from '@liquidiqq/iconkit';
+</script>
+
 <Icon name="credit-card" strokewidth="2" />
 ```
 
 
-## Icon Sizing
+## Icon sizing
 
-### Global Icon Sizes
+### Global icon sizes
 
-Icons are sized using Tailwindcss classes. The regular size is `h-6 w-6` and mini is `h-5 w-5`. To change these global sizes, use the `regularSize`, and `miniSize` stores:
+Icons are sized using Tailwindcss classes. egular size is `h-6 w-6` and mini is `h-5 w-5`. To change these global sizes, use the `$regularSize`, and `$miniSize` stores:
 
 ```html
 <script>
@@ -134,13 +142,13 @@ Icons are sized using Tailwindcss classes. The regular size is `h-6 w-6` and min
 </script>
 ```
 
-This will affect all icon sizes across your app. It gives you the ability to keep your design system consistent. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`.
+This will affect all icon sizes across your app. It gives you the ability to keep your design system intact. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`, or any `globalSettings` file and initialize it in `layout`.
 
 If you are not using Tailwindcss, you can use your own classes:
 
 ```html
 <script>
-  import { regularSize, miniSize } from '@liquidiqq/iconkit'
+  import { regularSize, miniSize, Icon } from '@liquidiqq/iconkit'
 
   $regularSize = "custom-regular-size"
   $miniSize = "custom-mini-size"
@@ -163,7 +171,7 @@ If you are not using Tailwindcss, you can use your own classes:
 ```
 
 
-If you want to disable global sizing, set the `defaultSizes` store's value to `false`, however, you will have to manually set the size for each icon which is bad practice and can produce inconsisent styling:
+If you want to disable global sizing, set `$defaultSizes` to `false`, however, you will have to manually set the size for each icon which is not recommended as it lead to inconsisent styling:
 
 ```html
 <script>
@@ -174,7 +182,7 @@ If you want to disable global sizing, set the `defaultSizes` store's value to `f
 </script>
 ```
 
-It is not recommended to disable the default sizes, instead, define your own classes for `regularSize` and `miniSize`:
+It is not recommended to disable the default sizes, instead, define your own classes for `$regularSize` and `$miniSize`:
 
 ```html
 <script>
@@ -186,9 +194,9 @@ It is not recommended to disable the default sizes, instead, define your own cla
 ```
 
 
-### Single Icon Size
+### Single icon sizing
 
-To change a single icon's size simply use the `class` prop, this will only change the current icon's size and not affect other icons, good for one-off icons:
+Simply use the native `class` prop to assign per icon size, this will only change the current icon's size and not affect other icons, good for one-offs:
 
 ```html
 <Icon name="fire" class="h-8 w-8" />
@@ -197,7 +205,9 @@ To change a single icon's size simply use the `class` prop, this will only chang
 
 ### Colors
 
-By default, colors are set to `currentcolor`:
+By default, colors are set to `currentcolor`, which means the icon inherits the parent's color:
+
+```html
 
 ```html
 <div class="text-slate-500">
@@ -213,18 +223,18 @@ To assign a color to an icon:
 ```
 
 
-## Loading Icon
+## Loading icon
 
-A loading icon is shipped with Iconkit.
+A simple loading icon is shipped with Iconkit.
 
 ```html
 <Icon name="loading-circle" />
 ```
 
 
-### Change Loading Icon's Stroke Width
+### Change loading icon's stroke width
 
-You can change the loading icon's stroke width using the `loadingStrokeWidth` store, this is a global setting and will affect all loading icons across the app:
+You can change the loading icon's global stroke width using the `$loadingStrokeWidth` store, this is a global setting and will affect all loading icons across the app:
 
 ```html
 <script>
@@ -235,57 +245,22 @@ You can change the loading icon's stroke width using the `loadingStrokeWidth` st
 ```
 
 
-### Change Single Loading Icon's Stroke Width
+### Change single loading icon's stroke width
 
 To change a single loading icon's stroke width, use the `strokewidth` prop, this will not affect other loading icons:
 
 ```html
+<script>
+  import { Icon } from '@liquidiqq/iconkit'
+</script>
+
 <Icon name="loading-circle" strokewidth="2" />
 ```
 
 
-## Handling State
+## Browsing icons
 
-### Switch From Outline To Solid
-
-To switch from outline to solid, use a `boolean` with the `mode` prop:
-
-```html
-<script>
-  let isLiked = false
-
-  function handleLike(){
-    // ...
-    isLiked = true
-  }
-</script>
-
-<Icon name="heart" mode={isLiked ? 'solid' : 'outline'}/>
-```
-
-
-### Handle Loading State
-
-Use a `boolean` with the `name` prop:
-
-```html
-<script>
-  let isLoading = false
-
-  function handleSubmit(){
-    isLoading = true
-    // ... submit logic
-    isLoading = false
-  }
-</script>
-
-<Icon name={isLoading ? 'loading-circle' : 'paper-airplane'} />
-```
-
-
-## Browsing icons & Documentation
-
-Coming soon.
+Iconkit website coming soon.
 
 
 ## License

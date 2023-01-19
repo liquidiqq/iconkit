@@ -181,6 +181,7 @@
 			fill = 'currentColor';
 		}
 	}
+
 	// classes
 	let classesAssigned: any = `"${$$props.class}"`;
 	let hasSize = classesAssigned.indexOf('h-') || classesAssigned.indexOf('w-');
