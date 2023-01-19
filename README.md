@@ -39,9 +39,28 @@ npx svelte-add@latest tailwindcss
 npm install -D @liquidiqq/iconkit
 ```
 
+
+## Properties
+
+| **Name**                    | **Type**  | **Default value** | **Description**                                        |
+|-----------------------------|-----------|-------------------|--------------------------------------------------------|
+| **Component Props:**        |           |                   |                                                        |
+| `name`                      | `string`  | -                 | Name of icon, e.g. "gift", or "svelte-logo"            |
+| `mode`                      | `string`  | `"outline"`       | Sets mode of icon. Accepts: `outline \| solid \| mini` |
+| `strokewidth`               | `string`  | -                 | Sets current icon's stroke width                       |
+| **Stroke global settings:** |           |                   |                                                        |
+| `strokeWidth`               | `string`  | `"1.5"`           | Sets global stroke with for all outline icons          |
+| `loadingStrokeWidth`        | `string`  | -                 | If not set, gets `strokeWidth`'s value (`"1.5"`)       |
+| **Size global settings:**   |           |                   |                                                        |
+| `defaultSizes`              | `boolean` | `true`            | Disable's global sizes for `regular` and `mini`        |
+| `regularSize`               | `string`  | `"h-6 w-6"`       | Sets global `regular` size                             |
+| `miniSize`                  | `string`  | `"h-5 w-5"`       | Sets global `mini` size                                |
+|                             |           |                   |                                                        |
+
+
 ## Quick Start
 
-### Quick Usage
+### Usage
 
 ```html
 <script>
@@ -51,11 +70,10 @@ npm install -D @liquidiqq/iconkit
 <Icon name="face-smile">
 ```
 
-<br/>
 
 ### Icon Sources and Optimizations
 
-**All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px` viewBox sizes.**
+All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px` viewBox sizes.
 
 All Heroicons are included. Search icon names [here](https://heroicons.com/) until Iconkit's website is launched. Logos are from [Ionicons](https://ionic.io/ionicons/). Logo icon names are suffixed with `-logo`. For example, `svelte-logo`:
 
@@ -66,7 +84,6 @@ All Heroicons are included. Search icon names [here](https://heroicons.com/) unt
 <Icon name="apple-logo">
 ```
 
-<br/>
 
 ### Modes
 Modes are `outline`, `solid`, and `mini`. If not defined, default is `outline`:
@@ -75,7 +92,6 @@ Modes are `outline`, `solid`, and `mini`. If not defined, default is `outline`:
 <Icon name="bell-alert" mode="solid">
 ```
 
-<br/>
 
 ### Global Stroke Width
 
@@ -83,7 +99,7 @@ To change the global stroke width, use the `strokeWidth` store. For auto sub and
 
 ```html
 <script>
-	import { strokeWidth } from '@liquidiqq/iconkit'
+  import { strokeWidth } from '@liquidiqq/iconkit'
 
   $strokeWidth = "4"
 </script>
@@ -93,7 +109,6 @@ To change the global stroke width, use the `strokeWidth` store. For auto sub and
 
 This will change all icons' stroke width across the app. It gives you the flexibility to match your theme aesthetics. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`.
 
-<br/>
 
 ### Single Icon Stroke Width
 
@@ -103,7 +118,6 @@ To change a single icon's stroke width use the `strokewidth` prop, this will onl
 <Icon name="credit-card" strokewidth="2" />
 ```
 
-<br/>
 
 ## Icon Sizing
 
@@ -148,7 +162,6 @@ If you are not using Tailwindcss, you can use your own classes:
 </style>
 ```
 
-<br/>
 
 If you want to disable global sizing, set the `defaultSizes` store's value to `false`, however, you will have to manually set the size for each icon which is bad practice and can produce inconsisent styling:
 
@@ -161,7 +174,7 @@ If you want to disable global sizing, set the `defaultSizes` store's value to `f
 </script>
 ```
 
-It is not recommended to disable the default sizes, instead, define your own classes for `regularSize` and `miniSize` global stores:
+It is not recommended to disable the default sizes, instead, define your own classes for `regularSize` and `miniSize`:
 
 ```html
 <script>
@@ -172,7 +185,6 @@ It is not recommended to disable the default sizes, instead, define your own cla
 </script>
 ```
 
-<br/>
 
 ### Single Icon Size
 
@@ -182,7 +194,6 @@ To change a single icon's size simply use the `class` prop, this will only chang
 <Icon name="fire" class="h-8 w-8" />
 ```
 
-<br/>
 
 ### Colors
 
@@ -201,17 +212,15 @@ To assign a color to an icon:
 <Icon name="globe" class="text-pink-500" />
 ```
 
-<br/>
 
 ## Loading Icon
 
-A loading icon is shipped with iconkit.
+A loading icon is shipped with Iconkit.
 
 ```html
 <Icon name="loading-circle" />
 ```
 
-<br/>
 
 ### Change Loading Icon's Stroke Width
 
@@ -225,7 +234,6 @@ You can change the loading icon's stroke width using the `loadingStrokeWidth` st
 </script>
 ```
 
-<br/>
 
 ### Change Single Loading Icon's Stroke Width
 
@@ -235,7 +243,6 @@ To change a single loading icon's stroke width, use the `strokewidth` prop, this
 <Icon name="loading-circle" strokewidth="2" />
 ```
 
-<br/>
 
 ## Handling State
 
@@ -256,7 +263,6 @@ To switch from outline to solid, use a `boolean` with the `mode` prop:
 <Icon name="heart" mode={isLiked ? 'solid' : 'outline'}/>
 ```
 
-<br/>
 
 ### Handle Loading State
 
@@ -267,21 +273,20 @@ Use a `boolean` with the `name` prop:
   let isLoading = false
 
   function handleSubmit(){
-    // ...
     isLoading = true
+    // ... submit logic
+    isLoading = false
   }
 </script>
 
 <Icon name={isLoading ? 'loading-circle' : 'paper-airplane'} />
 ```
 
-<br/>
 
 ## Browsing icons & Documentation
 
 Coming soon.
 
-<br/>
 
 ## License
 
