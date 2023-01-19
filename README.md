@@ -49,12 +49,12 @@ npm install -D @liquidiqq/iconkit
 | `mode`                      | `string`  | `"outline"`       | Sets mode of icon. Accepts: `outline \| solid \| mini` |
 | `strokewidth`               | `string`  | -                 | Sets current icon's stroke width                       |
 | **Stroke global settings:** |           |                   |                                                        |
-| `strokeWidth`               | `string`  | `"1.5"`           | Sets global stroke with for all outline icons          |
-| `loadingStrokeWidth`        | `string`  | -                 | If not set, gets `strokeWidth`'s value (`"1.5"`)       |
+| `$strokeWidth`               | `string`  | `"1.5"`           | Sets global stroke with for all outline icons          |
+| `$loadingStrokeWidth`        | `string`  | -                 | If not set, gets `strokeWidth`'s value (`"1.5"`)       |
 | **Size global settings:**   |           |                   |                                                        |
 | `defaultSizes`              | `boolean` | `true`            | Disable's global sizes for `regular` and `mini`        |
-| `regularSize`               | `string`  | `"h-6 w-6"`       | Sets global `regular` size                             |
-| `miniSize`                  | `string`  | `"h-5 w-5"`       | Sets global `mini` size                                |
+| `$regularSize`               | `string`  | `"h-6 w-6"`       | Sets global `regular` size                             |
+| `$miniSize`                  | `string`  | `"h-5 w-5"`       | Sets global `mini` size                                |
 |                             |           |                   |                                                        |
 
 
