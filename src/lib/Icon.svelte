@@ -1,6 +1,3 @@
-<script context="module">
-</script>
-
 <script lang="ts">
 	import './loading-circle.css';
 	import { mainOutline, mainSolid, mainMini, loadingIcons, logosPack } from './icons';
@@ -15,18 +12,18 @@
 		extraMini,
 		strokeWidth,
 		loadingStrokeWidth,
-		tailwindDefault,
-		tailwindMini,
-		tailwind
+		regularSize,
+		miniSize,
+		defaultSizes
 	} from './icons';
-	import type { Icon, customIcon } from './icons';
+	import type { Icon } from './icons';
 
 	export let name: string;
 	let iconName: string;
-	let opacity: string = '0';
 	let stroke: string | undefined = undefined;
 	let fill: string | undefined = undefined;
 	export let focusable: string | number | null | undefined = 'false';
+	export let strokewidth: string | undefined = undefined;
 	let setStrokeWidth: string | undefined = undefined;
 
 	type Mode = 'outline' | 'solid' | 'mini' | undefined;
@@ -43,6 +40,8 @@
 
 	$: {
 		viewBox;
+		setStrokeWidth;
+		strokewidth;
 	}
 	// brand icons from store
 	let brandIconsSt = $brandIcons;
@@ -102,7 +101,7 @@
 		setStrokeWidth = $loadingStrokeWidth;
 		stroke = 'currentColor';
 		fill = 'none';
-		iconName = loadingIcons[name];
+		iconName = loadingIcons[name]['path'];
 	} else if (isAllIcons) {
 		switch (mode) {
 			case 'outline':
@@ -143,7 +142,7 @@
 		if (isMiniExtra) renderIcon(extraMiniSt);
 	}
 
-	function renderIconWithViewbox(iconObj: customIcon) {
+	function renderIconWithViewbox(iconObj: Icon) {
 		if (iconObj[name].hasOwnProperty('viewBox')) {
 			viewBox = iconObj[name]['viewBox'];
 			viewBox = viewBox;
@@ -165,7 +164,7 @@
 			viewBox = mini ? '0 0 20 20' : '0 0 24 24';
 			viewBox = viewBox;
 
-			iconName = iconObj[name];
+			iconName = iconObj[name]['path'];
 			iconName = iconName;
 		}
 	}
@@ -185,16 +184,16 @@
 	// classes
 	let classesAssigned: any = `"${$$props.class}"`;
 	let hasSize = classesAssigned.indexOf('h-') || classesAssigned.indexOf('w-');
-	$: tailwindClasses = mini ? $tailwindMini : $tailwindDefault;
-	$: isTailwind = $tailwind === true ? tailwindClasses : '';
-	$: baseClasses = hasSize === -1 ? `${isTailwind} ${$$props.class}` : $$props.class;
+	$: defaultSizesClasses = mini ? $miniSize : $regularSize;
+	$: isdefaultSizes = $defaultSizes === true ? defaultSizesClasses : '';
+	$: baseClasses = hasSize === -1 ? `${isdefaultSizes} ${$$props.class}` : $$props.class;
 </script>
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	{fill}
 	{viewBox}
-	stroke-width={setStrokeWidth}
+	stroke-width={strokewidth ? strokewidth : setStrokeWidth}
 	{stroke}
 	{focusable}
 	preserveAspectRatio="xMidYMid meet"
