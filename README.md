@@ -175,27 +175,27 @@ If you are not using Tailwindcss, you can Simply copy below classes to your glob
 ```css
 /* app.css or app.postcss */
 
+/* global regular icon size */
 .h-6 {
   height: 1.5rem;
 }
-
 .w-6 {
   width: 1.5rem;
 }
 
+/* global mini icon size */
 .h-5 {
   height: 1.25rem;
 }
-
 .w-5 {
   width: 1.25rem;
 }
 
 ```
 
-If you want your global icon sizes to change, simple adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
+If you want your global icon sizes to change, simply adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
 
-If you want to disable global sizing, set `$defaultSizes` to `false`, however, you will have to manually set the size for each icon which is not recommended as it lead to inconsisent styling:
+If you want to disable global sizing, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling:
 
 ```html
 <script>
@@ -220,7 +220,7 @@ It is not recommended to disable the default sizes, instead, define your own cla
 
 ### Single icon sizing
 
-Simply use the native `class` prop to assign per icon size, this will only change the current icon's size and not affect other icons, good for one-offs:
+Simply use the native `class` prop to assign a custom size to an icon, this will only change the current icon's size and not affect other icons, good for one-offs, e.g. hero section logo, card header logo, etc:
 
 ```html
 <Icon name="fire" class="h-8 w-8" />
