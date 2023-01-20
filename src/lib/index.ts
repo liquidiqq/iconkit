@@ -15,7 +15,7 @@ export {
 	strokeWidth,
 	loadingStrokeWidth,
 	// default style - tailwind
-	tailwind,
-	tailwindDefault,
-	tailwindMini
+	defaultSizes,
+	regularSize,
+	miniSize
 } from './icons';
