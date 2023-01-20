@@ -52,7 +52,7 @@ npm install -D @liquidiqq/iconkit
 | `$strokeWidth`              |  `string` |      `"1.5"`      | Sets global stroke with for all outline icons          |
 | `$loadingStrokeWidth`       |  `string` |         -         | If not set, gets `strokeWidth`'s value (`"1.5"`)       |
 | **Size global settings:**   |           |                   |                                                        |
-| `$defaultSizes`             | `boolean` |       `true`      | Disable's global sizes for `regular` and `mini`        |
+| `$defaultSizes`             | `boolean` |       `true`      | Disables global sizes for `regular` and `mini`        |
 | `$regularSize`              |  `string` |    `"h-6 w-6"`    | Sets global `regular` size                             |
 | `$miniSize`                 |  `string` |    `"h-5 w-5"`    | Sets global `mini` size                                |
 |                             |           |                   |                                                        |
@@ -131,7 +131,7 @@ To change a single icon's stroke width use the `strokewidth` prop, this will onl
 
 ### Global icon sizes
 
-Icons are sized using Tailwindcss classes. egular size is `h-6 w-6` and mini is `h-5 w-5`. To change these global sizes, use the `$regularSize`, and `$miniSize` stores:
+Icons are sized using Tailwindcss classes. Regular size is `h-6 w-6` and mini is `h-5 w-5`. To change these global sizes, use the `$regularSize`, and `$miniSize` stores:
 
 ```html
 <script>
@@ -170,6 +170,30 @@ If you are not using Tailwindcss, you can use your own classes:
 </style>
 ```
 
+If you are not using Tailwindcss, you can Simply copy below classes to your global stylesheet, e.g. `app.css`, `app.postcss`:
+
+```css
+/* app.css or app.postcss */
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+```
+
+If you want your global icon sizes to change, simple adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
 
 If you want to disable global sizing, set `$defaultSizes` to `false`, however, you will have to manually set the size for each icon which is not recommended as it lead to inconsisent styling:
 
