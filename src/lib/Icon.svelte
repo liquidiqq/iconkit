@@ -10,7 +10,7 @@
 		extraOutline,
 		extraSolid,
 		extraMini,
-		strokeWidth,
+		defaultStrokeWidth,
 		loadingStrokeWidth,
 		regularSize,
 		miniSize,
@@ -22,12 +22,13 @@
 	let iconName: string;
 	let stroke: string | undefined = undefined;
 	let fill: string | undefined = undefined;
-	export let focusable: string | number | null | undefined = 'false';
-	export let strokewidth: string | undefined = undefined;
+
+	export let strokeWidth: string | undefined = undefined;
 	let setStrokeWidth: string | undefined = undefined;
 
-	type Mode = 'outline' | 'solid' | 'mini' | undefined;
+	export let noDefaultSize: boolean = false;
 
+	type Mode = 'outline' | 'solid' | 'mini' | undefined;
 	export let mode: Mode = undefined;
 
 	export let outline: boolean = false;
@@ -41,7 +42,7 @@
 	$: {
 		viewBox;
 		setStrokeWidth;
-		strokewidth;
+		strokeWidth;
 	}
 	// brand icons from store
 	let brandIconsSt = $brandIcons;
@@ -89,7 +90,11 @@
 		outline = false;
 		solid = false;
 		mini = false;
-		if (logosPack.hasOwnProperty(name)) renderIcon(logosPack);
+		if (logosPack.hasOwnProperty(name)) {
+			solid = true;
+			runIconMode();
+			renderIcon(logosPack);
+		}
 		if (brandIconsSt.hasOwnProperty(name)) renderIconWithViewbox(brandIconsSt);
 		if (extraIconsSt.hasOwnProperty(name)) renderIconWithViewbox(extraIconsSt);
 	} else if (isLoadingIcon) {
@@ -126,23 +131,23 @@
 				break;
 		}
 	}
-	function outlineIcons() {
+	function outlineIcons(): void {
 		if (isOutlineMain) renderIcon(mainOutline);
 		if (isOutlineBrand) renderIcon(brandOutlineSt);
 		if (isOutlineExtra) renderIcon(extraOutlineSt);
 	}
-	function solidIcons() {
+	function solidIcons(): void {
 		if (isSolidMain) renderIcon(mainSolid);
 		if (isSolidBrand) renderIcon(brandSolidSt);
 		if (isSolidExtra) renderIcon(extraSolidSt);
 	}
-	function miniIcons() {
+	function miniIcons(): void {
 		if (isMiniMain) renderIcon(mainMini);
 		if (isMiniBrand) renderIcon(brandMiniSt);
 		if (isMiniExtra) renderIcon(extraMiniSt);
 	}
 
-	function renderIconWithViewbox(iconObj: Icon) {
+	function renderIconWithViewbox(iconObj: Icon): void {
 		if (iconObj[name].hasOwnProperty('viewBox')) {
 			viewBox = iconObj[name]['viewBox'];
 			viewBox = viewBox;
@@ -159,7 +164,7 @@
 		}
 	}
 
-	function renderIcon(iconObj: Icon) {
+	function renderIcon(iconObj: Icon): void {
 		if (iconObj.hasOwnProperty(name)) {
 			viewBox = mini ? '0 0 20 20' : '0 0 24 24';
 			viewBox = viewBox;
@@ -169,9 +174,9 @@
 		}
 	}
 
-	function runIconMode() {
+	function runIconMode(): void {
 		if (outline) {
-			setStrokeWidth = $strokeWidth;
+			setStrokeWidth = $defaultStrokeWidth;
 			stroke = 'currentColor';
 			fill = 'none';
 		}
@@ -183,22 +188,20 @@
 	}
 
 	// classes
-	let classesAssigned: any = `"${$$props.class}"`;
-	let hasSize = classesAssigned.indexOf('h-') || classesAssigned.indexOf('w-');
 	$: defaultSizesClasses = mini ? $miniSize : $regularSize;
 	$: isdefaultSizes = $defaultSizes === true ? defaultSizesClasses : '';
-	$: baseClasses = hasSize === -1 ? `${isdefaultSizes} ${$$props.class}` : $$props.class;
+	$: baseClasses =
+		noDefaultSize === true ? $$props.class ?? '' : `${isdefaultSizes} ${$$props.class ?? ''}`;
 </script>
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
+	{...$$restProps}
 	{fill}
 	{viewBox}
-	stroke-width={strokewidth ? strokewidth : setStrokeWidth}
 	{stroke}
-	{focusable}
+	stroke-width={strokeWidth ? strokeWidth : setStrokeWidth}
 	preserveAspectRatio="xMidYMid meet"
-	{...$$restProps}
 	class={baseClasses}
 >
 	{@html iconName}

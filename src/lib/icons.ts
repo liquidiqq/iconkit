@@ -20,9 +20,9 @@ function followStrokeWidth(store: Writable<string>) {
 	};
 }
 
-export const strokeWidth: Writable<string> = writable('1.5');
+export const defaultStrokeWidth: Writable<string> = writable('1.5');
 
-export const loadingStrokeWidth: Writable<string> = followStrokeWidth(strokeWidth);
+export const loadingStrokeWidth: Writable<string> = followStrokeWidth(defaultStrokeWidth);
 
 export const defaultSizes: Writable<boolean> = writable(true);
 export const regularSize: Writable<string> = writable('h-6 w-6');

@@ -39,24 +39,26 @@ npx svelte-add@latest tailwindcss
 npm install -D @liquidiqq/iconkit
 ```
 
+<br />
 
 ## Properties
 
-| **Name**                    |  **Type** | **Default value** | **Description**                                        |
-|-----------------------------|:---------:|:-----------------:|--------------------------------------------------------|
-| **Component props:**        |           |                   |                                                        |
-| `name`                      |  `string` |         -         | Name of icon, e.g. `"gift"`, or `"svelte-logo"`        |
-| `mode`                      |  `string` |    `"outline"`    | Sets mode of icon. Accepts: `outline \| solid \| mini` |
-| `strokewidth`               |  `string` |         -         | Sets current icon's stroke width                       |
-| **Stroke global settings:** |           |                   |                                                        |
-| `$strokeWidth`              |  `string` |      `"1.5"`      | Sets global stroke with for all outline icons          |
-| `$loadingStrokeWidth`       |  `string` |         -         | If not set, gets `strokeWidth`'s value (`"1.5"`)       |
-| **Size global settings:**   |           |                   |                                                        |
-| `$defaultSizes`             | `boolean` |       `true`      | Disables global sizes for `regular` and `mini`        |
-| `$regularSize`              |  `string` |    `"h-6 w-6"`    | Sets global `regular` size                             |
-| `$miniSize`                 |  `string` |    `"h-5 w-5"`    | Sets global `mini` size                                |
-|                             |           |                   |                                                        |
+| **Name**                    |  **Type** | **Default value** | **Description**                                              |
+|-----------------------------|:---------:|:-----------------:|--------------------------------------------------------------|
+| **Component props:**        |           |                   |                                                              |
+| `name`                      |  `string` |         -         | Name of icon, e.g. `"gift"`, or `"svelte-logo"`              |
+| `mode`                      |  `string` |    `"outline"`    | Sets mode of icon. Accepts: `"outline" \| "solid" \| "mini"` |
+| `strokeWidth`               |  `string` |         -         | Sets current icon's stroke width                             |
+| `noDefaultSize`             | `boolean` |      `false`      | Disables current icon's global size (`height` and `width`)   |
+| **Stroke global settings:** |           |                   |                                                              |
+| `$defaultStrokeWidth`       |  `string` |      `"1.5"`      | Sets global stroke width for all outline icons               |
+| `$loadingStrokeWidth`       |  `string` |         -         | If not set, gets `$defaultStrokeWidth`'s value (`"1.5"`)             |
+| **Size global settings:**   |           |                   |                                                              |
+| `$defaultSizes`             | `boolean` |       `true`      | Disables global sizes for `regular` and `mini`               |
+| `$regularSize`              |  `string` |    `"h-6 w-6"`    | Sets global `regular` size                                   |
+| `$miniSize`                 |  `string` |    `"h-5 w-5"`    | Sets global `mini` size                                      |
 
+<br/>
 
 ## Quick start
 
@@ -65,6 +67,7 @@ npm install -D @liquidiqq/iconkit
 ```html
 <script>
 	import { Icon } from '@liquidiqq/iconkit';
+
 </script>
 
 <Icon name="face-smile">
@@ -73,13 +76,12 @@ npm install -D @liquidiqq/iconkit
 
 ### Icon sources and optimizations
 
-All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px`.
-
-All Heroicons are included. You can search icon names [here](https://heroicons.com/) until Iconkit's website is launched. Logos are from [Ionicons](https://ionic.io/ionicons/). Logo icon names are suffixed with `-logo`. For example, `svelte-logo`:
+All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, and `20px` by `20px` from [Heroicons](https://heroicons.com/) and [Ionicons](https://ionic.io/ionicons/). Search icon names [here](https://heroicons.com/) until Iconkit's website is launched. Search major brand logo names [here](https://ionic.io/ionicons/). Logo icon names are suffixed with `-logo`. For example, `svelte-logo`:
 
 ```html
 <script>
 	import { Icon } from '@liquidiqq/iconkit';
+
 </script>
 
 <Icon name="svelte-logo">
@@ -99,31 +101,31 @@ All icons have `outline`, `solid`, and `mini` modes. If not defined, default is 
 
 ### Global stroke width
 
-To change the global stroke width, use the `$strokeWidth` store. For auto sub and unsub use the `$` syntax:
+To change the global stroke width, use the `$defaultStrokeWidth` store. For auto sub and unsub use the `$` syntax:
 
 ```html
 <script>
-  import { strokeWidth, Icon } from '@liquidiqq/iconkit'
+  import { defaultStrokeWidth, Icon } from '@liquidiqq/iconkit'
 
-  $strokeWidth = "4"
+  $defaultStrokeWidth = "4"
 </script>
 
 <Icon name="flag">
 ```
 
-This will change all icons' stroke width across the app. It gives you the flexibility to match your theme aesthetics. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`.
+This will change the stroke width of all icons across the app. It provides the flexibility to match your theme aesthetics. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`, or any `globalSettings` file and initialize it in `layout`.
 
 
 ### Single icon stroke width
 
-To change a single icon's stroke width use the `strokewidth` prop, this will only change the current icon's stroke width:
+To change a single icon's stroke width use the `strokeWidth` prop, this will only change the current icon's stroke width:
 
 ```html
 <script>
 	import { Icon } from '@liquidiqq/iconkit';
 </script>
 
-<Icon name="credit-card" strokewidth="2" />
+<Icon name="credit-card" strokeWidth="2" />
 ```
 
 
@@ -142,7 +144,7 @@ Icons are sized using Tailwindcss classes. Regular size is `h-6 w-6` and mini is
 </script>
 ```
 
-This will affect all icon sizes across your app. It gives you the ability to keep your design system intact. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`, or any `globalSettings` file and initialize it in `layout`.
+This will affect all icon sizes across your app. It gives you the ability to keep your design system intact.
 
 If you are not using Tailwindcss, you can use your own classes:
 
@@ -170,7 +172,7 @@ If you are not using Tailwindcss, you can use your own classes:
 </style>
 ```
 
-If you are not using Tailwindcss, you can Simply copy below classes to your global stylesheet, e.g. `app.css`, `app.postcss`:
+If you are not using Tailwindcss, you can simply copy below classes to your global stylesheet, e.g. `app.css`, `app.postcss`:
 
 ```css
 /* app.css or app.postcss */
@@ -193,15 +195,15 @@ If you are not using Tailwindcss, you can Simply copy below classes to your glob
 
 ```
 
-If you want your global icon sizes to change, simply adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
+To change the size of icons globally, simply adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
 
-If you want to disable global sizing, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling:
+To disable global sizing, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling:
 
 ```html
 <script>
   import { defaultSizes } from '@liquidiqq/iconkit'
 
-  // Not advised, instead, define your own classes for regularSize and miniSize
+  // Not advised, instead, define your own classes for $regularSize and $miniSize
   $defaultSizes = false
 </script>
 ```
@@ -220,16 +222,16 @@ It is not recommended to disable the default sizes, instead, define your own cla
 
 ### Single icon sizing
 
-Simply use the native `class` prop to assign a custom size to an icon, this will only change the current icon's size and not affect other icons, good for one-offs, e.g. hero section logo, card header logo, etc:
+Simply add the `noDefaultSize` prop without assigning any value (shown below), now you can add `height` and `width` as you like, e.g. either through native attributes such as `style` or `class`, this will only change the current icon's size and not affect other icons, good for one-offs, e.g. hero section logo, card header logo, etc:
 
 ```html
-<Icon name="fire" class="h-8 w-8" />
+<Icon name="fire" class="h-12 w-12" />
 ```
 
 
 ### Colors
 
-By default, colors are set to `currentcolor`, which means the icon inherits the parent's color:
+By default, colors are set to `currentColor`, which means the icon inherits the parent's color:
 
 ```html
 
@@ -262,24 +264,31 @@ You can change the loading icon's global stroke width using the `$loadingStrokeW
 
 ```html
 <script>
-  import { loadingStrokeWidth } from '@liquidiqq/iconkit'
+  import { loadingStrokeWidth, Icon } from '@liquidiqq/iconkit'
 
   $loadingStrokeWidth = "2"
 </script>
+
+<Icon name="loading-circle" />
 ```
 
 
 ### Change single loading icon's stroke width
 
-To change a single loading icon's stroke width, use the `strokewidth` prop, this will not affect other loading icons:
+To change the stroke width of a single loading icon, use the `strokeWidth` prop, this will not affect other loading icons:
 
 ```html
 <script>
   import { Icon } from '@liquidiqq/iconkit'
+
 </script>
 
-<Icon name="loading-circle" strokewidth="2" />
+<Icon name="loading-circle" strokeWidth="2" />
 ```
+
+## Adding brand and custom icons
+
+Coming soon.
 
 
 ## Browsing icons
