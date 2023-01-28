@@ -12,7 +12,7 @@ export {
 	extraSolid,
 	extraMini,
 	// stroke-width
-	strokeWidth,
+	defaultStrokeWidth,
 	loadingStrokeWidth,
 	// default style - tailwind
 	defaultSizes,
