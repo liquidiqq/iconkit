@@ -21,10 +21,14 @@ Handpicked community icons for the Svelte ecosystem.
 </p>
 
 <div align="center">
-	<strong>Browsing icons and documentation coming soon.</strong>
+	<strong>Iconkit's website for browsing icons is coming soon.</strong>
 </div>
 
+<br />
+
 ---
+
+<br />
 
 ## Installation
 
@@ -47,7 +51,7 @@ npm install -D @liquidiqq/iconkit
 |-----------------------------|:---------:|:-----------------:|--------------------------------------------------------------|
 | **Component props:**        |           |                   |                                                              |
 | `name`                      |  `string` |         -         | Name of icon, e.g. `"gift"`, or `"svelte-logo"`              |
-| `mode`                      |  `string` |    `"outline"`    | Sets mode of icon. Accepts: `"outline" \| "solid" \| "mini"` |
+| `mode`                      |  `string` |    `"outline"`    | Sets mode of icon. Accepts: `"outline", "solid", "mini"` |
 | `strokeWidth`               |  `string` |         -         | Sets current icon's stroke width                             |
 | `noDefaultSize`             | `boolean` |      `false`      | Disables current icon's global size (`height` and `width`)   |
 | **Stroke global settings:** |           |                   |                                                              |
@@ -58,7 +62,7 @@ npm install -D @liquidiqq/iconkit
 | `$regularSize`              |  `string` |    `"h-6 w-6"`    | Sets global `regular` size                                   |
 | `$miniSize`                 |  `string` |    `"h-5 w-5"`    | Sets global `mini` size                                      |
 
-<br/>
+<br />
 
 ## Quick start
 
@@ -66,8 +70,7 @@ npm install -D @liquidiqq/iconkit
 
 ```html
 <script>
-	import { Icon } from '@liquidiqq/iconkit';
-
+  import { Icon } from '@liquidiqq/iconkit'
 </script>
 
 <Icon name="face-smile">
@@ -80,8 +83,7 @@ All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, 
 
 ```html
 <script>
-	import { Icon } from '@liquidiqq/iconkit';
-
+  import { Icon } from '@liquidiqq/iconkit'
 </script>
 
 <Icon name="svelte-logo">
@@ -89,7 +91,6 @@ All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, 
 <Icon name="discord-logo">
 <Icon name="apple-logo">
 ```
-
 
 ### Modes
 All icons have `outline`, `solid`, and `mini` modes. If not defined, default is `outline`:
@@ -122,12 +123,13 @@ To change a single icon's stroke width use the `strokeWidth` prop, this will onl
 
 ```html
 <script>
-	import { Icon } from '@liquidiqq/iconkit';
+  import { Icon } from '@liquidiqq/iconkit'
 </script>
 
 <Icon name="credit-card" strokeWidth="2" />
 ```
 
+<br />
 
 ## Icon sizing
 
@@ -219,21 +221,19 @@ It is not recommended to disable the default sizes, instead, define your own cla
 </script>
 ```
 
-
 ### Single icon sizing
 
-Simply add the `noDefaultSize` prop without assigning any value (shown below), now you can add `height` and `width` as you like, e.g. either through native attributes such as `style` or `class`, this will only change the current icon's size and not affect other icons, good for one-offs, e.g. hero section logo, card header logo, etc:
+Simply add the `noDefaultSize` prop without assigning any value (shown below), now you can add `height` and `width` as you like, e.g. either through native attributes such as `style` or `class`. This will only change the current icon's size and not affect other icons, good for one-offs, e.g. hero section logo, card header logo, etc:
 
 ```html
-<Icon name="fire" class="h-12 w-12" />
+<Icon name="fire" class="h-12 w-12" noDefaultSize />
 ```
 
+<br />
 
-### Colors
+## Colors
 
 By default, colors are set to `currentColor`, which means the icon inherits the parent's color:
-
-```html
 
 ```html
 <div class="text-slate-500">
@@ -248,6 +248,7 @@ To assign a color to an icon:
 <Icon name="globe" class="text-pink-500" />
 ```
 
+<br/>
 
 ## Loading icon
 
@@ -256,7 +257,6 @@ A simple loading icon is shipped with Iconkit.
 ```html
 <Icon name="loading-circle" />
 ```
-
 
 ### Change loading icon's stroke width
 
@@ -272,7 +272,6 @@ You can change the loading icon's global stroke width using the `$loadingStrokeW
 <Icon name="loading-circle" />
 ```
 
-
 ### Change single loading icon's stroke width
 
 To change the stroke width of a single loading icon, use the `strokeWidth` prop, this will not affect other loading icons:
@@ -280,21 +279,24 @@ To change the stroke width of a single loading icon, use the `strokeWidth` prop,
 ```html
 <script>
   import { Icon } from '@liquidiqq/iconkit'
-
 </script>
 
 <Icon name="loading-circle" strokeWidth="2" />
 ```
 
+<br/>
+
 ## Adding brand and custom icons
 
 Coming soon.
 
+<br/>
 
 ## Browsing icons
 
 Iconkit website coming soon.
 
+<br/>
 
 ## License
 
