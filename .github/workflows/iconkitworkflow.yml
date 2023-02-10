@@ -1,0 +1,22 @@
+name: Iconkit workflow
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Iconkit code workflow
+    defaults:
+      run:
+        working-directory: ./iconkit
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+    - name: Install requirements
+      run: npm install
+    - name: Run tests and collect coverage
+      run: npm run test
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
