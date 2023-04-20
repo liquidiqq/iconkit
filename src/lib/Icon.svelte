@@ -188,7 +188,7 @@
 	}
 
 	// classes
-	$: defaultSizesClasses = mini ? $miniSize : $regularSize;
+	$: defaultSizesClasses = !mini ? $regularSize : $miniSize;
 	$: isdefaultSizes = $defaultSizes === true ? defaultSizesClasses : '';
 	$: baseClasses =
 		noDefaultSize === true ? $$props.class ?? '' : `${isdefaultSizes} ${$$props.class ?? ''}`;

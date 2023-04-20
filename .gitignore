@@ -4,6 +4,9 @@ node_modules
 /.svelte-kit
 /package
 /src/routes
+src/app.css
+/src/routes/+page.svelte
+/src/routes/icons.js
 .env
 .env.*
 !.env.example
