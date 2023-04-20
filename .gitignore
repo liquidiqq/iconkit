@@ -3,6 +3,7 @@ node_modules
 /build
 /.svelte-kit
 /package
+/dist
 /src/routes
 src/app.css
 /src/routes/+page.svelte
