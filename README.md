@@ -9,20 +9,18 @@
 </p>
 
 <p align="center">
-Handpicked community icons for the Svelte ecosystem.
+Community icons for the Svelte ecosystem.
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@liquidiqq/iconkit"><img src="https://img.shields.io/npm/dw/@liquidiqq/iconkit" alt="NPM Downloads"></a>
   <a href="https://www.npmjs.com/package/@liquidiqq/iconkit"><img src="https://img.shields.io/npm/v/@liquidiqq/iconkit?color=%23cb3737&logo=npm" alt="NPM Latest Release"></a>
-  <a href="https://www.npmjs.com/package/@liquidiqq/iconkit"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@liquidiqq/iconkit"></a>
+  <!-- <a href="https://www.npmjs.com/package/@liquidiqq/iconkit"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/@liquidiqq/iconkit"></a> -->
   <a href="https://github.com/liquidiqq/iconkit/blob/main/LICENSE"><img src="https://img.shields.io/github/license/liquidiqq/iconkit" alt="License"></a>
-
 </p>
 
-<div align="center">
-	<strong>Iconkit's website for browsing icons is coming soon.</strong>
-</div>
+
+<div align="center" style="margin:auto;width:400px;color:rgba(244,120,0,1);background-color:rgba(255,220,0,0.12);border-radius:7px;padding:10px 10px"><strong> ⚠️ Iconkit's website for browsing icons is coming soon.</strong></div>
 
 <br />
 
@@ -43,19 +41,45 @@ npx svelte-add@latest tailwindcss
 npm install -D @liquidiqq/iconkit
 ```
 
+
+Copy below classes to your global stylesheet e.g. `app.css`/`app.postcss` if you are not using Tailwindcss:
+
+> **Info**
+> If you are using Tailwindcss, you can skip this step as Tailwindcss already has these classes.
+
+```css
+/* --- Iconkit regular icon size --- */
+.h-6 {
+  height: 1.5rem;
+}
+.w-6 {
+  width: 1.5rem;
+}
+
+/* --- Iconkit mini icon size --- */
+.h-5 {
+  height: 1.25rem;
+}
+.w-5 {
+  width: 1.25rem;
+}
+```
+
 <br />
 
-## Properties
+---
+
+## Props
 
 | **Name**                    |  **Type** | **Default value** | **Description**                                              |
 |-----------------------------|:---------:|:-----------------:|--------------------------------------------------------------|
 | **Component props:**        |           |                   |                                                              |
-| `name`                      |  `string` |         -         | Name of icon, e.g. `"gift"`, or `"svelte-logo"`              |
-| `mode`                      |  `string` |    `"outline"`    | Sets mode of icon. Accepts: `"outline", "solid", "mini"` |
+| `name`                      |  `string` |         -         | Name of icon, e.g. `"gift"` or `"svelte-logo"`              |
+| `mode`                      |  `string` |    `outline`    | Sets mode of icon. Accepts: `outline \| solid \| mini` |
 | `strokeWidth`               |  `string` |         -         | Sets current icon's stroke width                             |
 | `noDefaultSize`             | `boolean` |      `false`      | Disables current icon's global size (`height` and `width`)   |
 | **Stroke global settings:** |           |                   |                                                              |
-| `$defaultStrokeWidth`       |  `string` |      `"1.5"`      | Sets global stroke width for all outline icons               |
+| `$defaultStrokeWidth`       |  `string` |      `1.5`      | Sets global stroke width for all outline icons               |
 | `$loadingStrokeWidth`       |  `string` |         -         | If not set, gets `$defaultStrokeWidth`'s value (`"1.5"`)             |
 | **Size global settings:**   |           |                   |                                                              |
 | `$defaultSizes`             | `boolean` |       `true`      | Disables global sizes for `regular` and `mini`               |
@@ -63,6 +87,8 @@ npm install -D @liquidiqq/iconkit
 | `$miniSize`                 |  `string` |    `"h-5 w-5"`    | Sets global `mini` size                                      |
 
 <br />
+
+---
 
 ## Quick start
 
@@ -73,7 +99,7 @@ npm install -D @liquidiqq/iconkit
   import { Icon } from '@liquidiqq/iconkit'
 </script>
 
-<Icon name="face-smile">
+<Icon name="face-smile" />
 ```
 
 
@@ -86,10 +112,10 @@ All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, 
   import { Icon } from '@liquidiqq/iconkit'
 </script>
 
-<Icon name="svelte-logo">
-<Icon name="github-logo">
-<Icon name="discord-logo">
-<Icon name="apple-logo">
+<Icon name="svelte-logo" />
+<Icon name="github-logo" />
+<Icon name="discord-logo" />
+<Icon name="apple-logo" />
 ```
 
 ### Modes
@@ -111,7 +137,7 @@ To change the global stroke width, use the `$defaultStrokeWidth` store. For auto
   $defaultStrokeWidth = "4"
 </script>
 
-<Icon name="flag">
+<Icon name="flag" />
 ```
 
 This will change the stroke width of all icons across the app. It provides the flexibility to match your theme aesthetics. If you have a global place for your app settings, it's best to place it there, e.g. `+layout.svelte`, or any `globalSettings` file and initialize it in `layout`.
@@ -131,11 +157,13 @@ To change a single icon's stroke width use the `strokeWidth` prop, this will onl
 
 <br />
 
+---
+
 ## Icon sizing
 
 ### Global icon sizes
 
-Icons are sized using Tailwindcss classes. Regular size is `h-6 w-6` and mini is `h-5 w-5`. To change these global sizes, use the `$regularSize`, and `$miniSize` stores:
+Icons are sized using Tailwindcss classes. Regular icon size is `h-6 w-6` and mini icon size is `h-5 w-5`. To change these global sizes with Tailwindcss, use the `$regularSize`, and `$miniSize` stores:
 
 ```html
 <script>
@@ -148,64 +176,70 @@ Icons are sized using Tailwindcss classes. Regular size is `h-6 w-6` and mini is
 
 This will affect all icon sizes across your app. It gives you the ability to keep your design system intact.
 
-If you are not using Tailwindcss, you can use your own classes:
+If you are not using Tailwindcss, you can change the `height` and `width` values for `h-6 w-6` and `h-5 w-5` classes:
+
+> **Warning**
+> Not recommended if have Tailwindcss installed, it may override Tailwindcss default classes.
+
+```css
+/* do this only if you are NOT using tailwindcss */
+
+/* --- Iconkit regular icon size --- */
+.h-6 {
+  height: 1.5rem; /* add your value */
+}
+.w-6 {
+  width: 1.5rem; /* add your value */
+}
+
+/* --- Iconkit mini icon size --- */
+.h-5 {
+  height: 1.25rem; /* add your value */
+}
+.w-5 {
+  width: 1.25rem; /* add your value */
+}
+```
+
+I have you your own theme classes for sizing, assign them to `$regularSize` and `$miniSize`:
+
 
 ```html
+<!-- +layout.svelte -->
+
 <script>
   import { regularSize, miniSize, Icon } from '@liquidiqq/iconkit'
 
-  $regularSize = "custom-regular-size"
-  $miniSize = "custom-mini-size"
+  $regularSize = "your-theme-regular-size"
+  $miniSize = "your-theme-mini-size"
 </script>
 
 <Icon name="fire" />
 <Icon name="fire" mode="mini" />
+```
 
-<!-- It is advised to put styles in a global sheet, such as, app.postcss, app.css, etc  -->
-<style>
-  :global(.custom-regular-size) {
+```css
+/* your theme.css */
+
+  .your-theme-regular-size {
     height: 2.5rem;
     width: 2.5rem;
   }
-  :global(.custom-mini-size) {
+  .your-theme-mini-size {
     height: 2rem;
     width: 2rem;
   }
-</style>
 ```
 
-If you are not using Tailwindcss, you can simply copy below classes to your global stylesheet, e.g. `app.css`, `app.postcss`:
+To disable global sizing, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling, mainly for `mini` sizes:
 
-```css
-/* app.css or app.postcss */
-
-/* global regular icon size */
-.h-6 {
-  height: 1.5rem;
-}
-.w-6 {
-  width: 1.5rem;
-}
-
-/* global mini icon size */
-.h-5 {
-  height: 1.25rem;
-}
-.w-5 {
-  width: 1.25rem;
-}
-
-```
-
-To change the size of icons globally, simply adjust the above `height` and `width` values accordingly and it will affect all icons across the app.
-
-To disable global sizing, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling:
+> **Warning**
+> Not advised, instead, define your own classes for $regularSize and $miniSize.
 
 ```html
 <script>
   import { defaultSizes } from '@liquidiqq/iconkit'
 
-  // Not advised, instead, define your own classes for $regularSize and $miniSize
   $defaultSizes = false
 </script>
 ```
@@ -230,6 +264,8 @@ Simply add the `noDefaultSize` prop without assigning any value (shown below), n
 ```
 
 <br />
+
+---
 
 ## Colors
 
