@@ -201,7 +201,7 @@ If you are not using Tailwindcss, you can change the `height` and `width` values
 }
 ```
 
-I have you your own theme classes for sizing, assign them to `$regularSize` and `$miniSize`:
+If you have your own theme classes for sizing, assign them to `$regularSize` and `$miniSize`:
 
 
 ```html
