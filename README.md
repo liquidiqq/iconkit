@@ -122,7 +122,7 @@ All icons are manually optimized for SvelteKit and adopted to `24px` by `24px`, 
 All icons have `outline`, `solid`, and `mini` modes. If not defined, default is `outline`:
 
 ```html
-<Icon name="bell-alert" mode="solid">
+<Icon name="bell-alert" mode="solid" />
 ```
 
 
@@ -179,7 +179,7 @@ This will affect all icon sizes across your app. It gives you the ability to kee
 If you are not using Tailwindcss, you can change the `height` and `width` values for `h-6 w-6` and `h-5 w-5` classes:
 
 > **Warning**
-> Not recommended if have Tailwindcss installed, it may override Tailwindcss default classes.
+> Not recommended if Tailwindcss is installed, it may override Tailwindcss default classes.
 
 ```css
 /* do this only if you are NOT using tailwindcss */
