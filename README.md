@@ -20,7 +20,7 @@ Community icons for the Svelte ecosystem.
 </p>
 
 
-<div align="center" style="margin:auto;width:400px;color:rgba(244,120,0,1);background-color:rgba(255,220,0,0.12);border-radius:7px;padding:10px 10px"><strong> ⚠️ Iconkit's website for browsing icons is coming soon.</strong></div>
+<div align="center" style="margin:auto;width:400px;color:rgba(244,120,0,1);background-color:rgba(255,220,0,0.12);border-radius:7px;padding:10px 10px"><strong>Iconkit's website for browsing icons is coming soon.</strong></div>
 
 <br />
 
@@ -44,7 +44,7 @@ npm install -D @liquidiqq/iconkit
 
 Copy below classes to your global stylesheet e.g. `app.css`/`app.postcss` if you are not using Tailwindcss:
 
-> **Info**
+> **Note**
 > If you are using Tailwindcss, you can skip this step as Tailwindcss already has these classes.
 
 ```css
