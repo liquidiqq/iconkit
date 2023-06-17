@@ -30,6 +30,34 @@ Community icons for the Svelte ecosystem.
 
 ## Installation
 
+### Install via CLI
+
+```bash
+# Svelte/SvelteKit is required
+npm create svelte@latest [your-app]
+
+# Tailwindcss is optional
+npx svelte-add@latest tailwindcss
+
+# Install Iconkit via the iconkit CLI
+npx iconkit-cli
+```
+
+The CLI will install Iconkit, add the required classes, and import it to your `+layout.svelte` so you can start using Iconkit right away:
+
+```html
+<!-- +page.svelte or component.svelte -->
+
+<script>
+  import { Icon } from '@liquidiqq/iconkit'
+</script>
+
+<Icon name="face-smile" />
+```
+
+<br />
+
+### Install via NPM
 ```bash
 # Svelte/SvelteKit is required
 npm create svelte@latest [your-app]
@@ -41,13 +69,14 @@ npx svelte-add@latest tailwindcss
 npm install -D @liquidiqq/iconkit
 ```
 
-
 Copy below classes to your global stylesheet e.g. `app.css`/`app.postcss` if you are not using Tailwindcss:
 
 > **Note**
 > If you are using Tailwindcss, you can skip this step as Tailwindcss already has these classes.
 
 ```css
+/* app.css` or `app.postcss */
+
 /* --- Iconkit regular icon size --- */
 .h-6 {
   height: 1.5rem;
@@ -64,6 +93,17 @@ Copy below classes to your global stylesheet e.g. `app.css`/`app.postcss` if you
   width: 1.25rem;
 }
 ```
+
+Now you can use Iconkit:
+
+```html
+<script>
+  import { Icon } from '@liquidiqq/iconkit'
+</script>
+
+<Icon name="face-smile" />
+```
+
 
 <br />
 
