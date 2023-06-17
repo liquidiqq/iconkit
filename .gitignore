@@ -6,7 +6,6 @@ node_modules
 /dist
 /src/routes
 src/app.css
-/src/cli.js
 .env
 .env.*
 !.env.example
