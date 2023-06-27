@@ -5,6 +5,7 @@ node_modules
 /package
 /dist
 iconkit-icons.ts
+iconkit-icons.d.ts
 /src/routes
 src/app.css
 .env

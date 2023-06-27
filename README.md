@@ -509,7 +509,7 @@ brandIcons.set({  //	icon set name, `brandIcons` `extraMini` etc
 })
 ```
 
-PRO TIP: Some svg datas are lenghty and hard to read, e.g.:
+**PRO TIP: Some svg datas are lengthy and hard to read, e.g.:**
 
 ```js
 brandIcons.set({
@@ -534,7 +534,7 @@ brandIcons.set({
 })
 ```
 
-To make it more readable, you can put them in one line and turn on word-wrap with `alt+z` in vscode:
+To make it more readable, you can put them in one line and turn on `word-wrap` with `alt+z` in vscode:
 
 ```js
 brandIcons.set({
@@ -551,8 +551,8 @@ Or even better:
 
 ```js
 brandIcons.set({
-      "icon-one": {path: `<path ... /><circle ... /><rect ... />`},
-      "icon-two": {path: `<g><path ... /><path ... /><path ... />...</g>`}
+    "icon-one": {path: `<path ... /><circle ... /><rect ... />`},
+    "icon-two": {path: `<g><path ... /><path ... /><path ... />...</g>`}
 })
 ```
 
