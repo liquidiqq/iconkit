@@ -1,7 +1,13 @@
 <script lang="ts">
 	import './loading-circle.css';
-	import { mainOutline, mainSolid, mainMini, loadingIcons, logosPack } from './icons';
+	import { twMerge } from 'tailwind-merge';
+
 	import {
+		mainOutline,
+		mainSolid,
+		mainMini,
+		loadingIcons,
+		logosPack,
 		brandIcons,
 		brandOutline,
 		brandSolid,
@@ -17,9 +23,11 @@
 		defaultSizes
 	} from './icons';
 	import type { Icon } from './icons';
+	import type { IconName } from './iconname-type-setup';
 
-	export let name: string;
-	let iconName: string;
+	export let name: IconName;
+
+	let icon: string;
 	let stroke: string | undefined = undefined;
 	let fill: string | undefined = undefined;
 
@@ -39,52 +47,58 @@
 
 	let loading: boolean = false;
 
-	$: {
-		viewBox;
-		setStrokeWidth;
-		strokeWidth;
-	}
-	// brand icons from store
+	// Store icons
 	let brandIconsSt = $brandIcons;
 	let brandOutlineSt = $brandOutline;
 	let brandSolidSt = $brandSolid;
 	let brandMiniSt = $brandMini;
-	// extra icons from store
+
 	let extraIconsSt = $extraIcons;
 	let extraOutlineSt = $extraOutline;
 	let extraSolidSt = $extraSolid;
 	let extraMiniSt = $extraMini;
-	// main outline, solid and mini icons
+
+	// Check if the icon is main outline, solid or mini
 	let isOutlineMain: boolean = mainOutline.hasOwnProperty(name);
 	let isSolidMain: boolean = mainSolid.hasOwnProperty(name);
 	let isMiniMain: boolean = mainMini.hasOwnProperty(name);
-	// brand outline, solid and mini icons
+
+	// Check if the icon is brand outline, solid or mini
 	let isOutlineBrand: boolean = brandOutlineSt.hasOwnProperty(name);
 	let isSolidBrand: boolean = brandSolidSt.hasOwnProperty(name);
 	let isMiniBrand: boolean = brandMiniSt.hasOwnProperty(name);
-	// extra outline, solid and mini icons
+
+	// Check if the icon is extra outline, solid or mini
 	let isOutlineExtra: boolean = extraOutlineSt.hasOwnProperty(name);
 	let isSolidExtra: boolean = extraSolidSt.hasOwnProperty(name);
 	let isMiniExtra: boolean = extraMiniSt.hasOwnProperty(name);
 
-	// flattened icons
+	// Check if the icon is a flattened icon
 	let isBrandIcons: boolean = brandIconsSt.hasOwnProperty(name);
-	// brand has viewBox
-	let brandHasViewbox: boolean = isBrandIcons ?? brandIconsSt[name].hasOwnProperty('viewBox');
 
 	let isExtraIcons: boolean = extraIconsSt.hasOwnProperty(name);
-	let extraHasViewbox: boolean = isExtraIcons ?? extraIconsSt[name].hasOwnProperty('viewBox');
-
-	let isCustomViewBox: boolean = brandHasViewbox || extraHasViewbox;
 
 	let isLogosPack: boolean = logosPack.hasOwnProperty(name);
-	// loading icons
-	let isLoadingIcon: boolean = loadingIcons.hasOwnProperty(name);
-	// prettier-ignore
-	let isAllIcons: boolean = isOutlineMain || isSolidMain || isMiniMain || isOutlineBrand || isSolidBrand || isMiniBrand || isOutlineExtra || isSolidExtra || isMiniExtra;
 
+	// Check if the icon is a loading icon
+	let isLoadingIcon: boolean = loadingIcons.hasOwnProperty(name);
+
+	// Check if the icon is any of the above
+	let isAllIcons: boolean =
+		isOutlineMain ||
+		isSolidMain ||
+		isMiniMain ||
+		isOutlineBrand ||
+		isSolidBrand ||
+		isMiniBrand ||
+		isOutlineExtra ||
+		isSolidExtra ||
+		isMiniExtra;
+
+	// Check if the icon is a flattened icon
 	let isFlattenedIcons: boolean = isBrandIcons || isExtraIcons || isLogosPack;
 
+	// Render the icon based on the above checks
 	$: if (isFlattenedIcons) {
 		mode = undefined;
 		outline = false;
@@ -106,7 +120,7 @@
 		setStrokeWidth = $loadingStrokeWidth;
 		stroke = 'currentColor';
 		fill = 'none';
-		iconName = loadingIcons[name]['path'];
+		icon = loadingIcons[name]['path'];
 	} else if (isAllIcons) {
 		switch (mode) {
 			case 'outline':
@@ -131,6 +145,8 @@
 				break;
 		}
 	}
+
+	// Render the icon based on the mode
 	function outlineIcons(): void {
 		if (isOutlineMain) renderIcon(mainOutline);
 		if (isOutlineBrand) renderIcon(brandOutlineSt);
@@ -147,33 +163,42 @@
 		if (isMiniExtra) renderIcon(extraMiniSt);
 	}
 
+	// Render the icon with a viewBox
 	function renderIconWithViewbox(iconObj: Icon): void {
 		if (iconObj[name].hasOwnProperty('viewBox')) {
 			viewBox = iconObj[name]['viewBox'];
 			viewBox = viewBox;
 			fill = 'none';
 			fill = fill;
-			iconName = iconObj[name]['path'];
-			iconName = iconName;
+			icon = iconObj[name]['path'].replace(/<svg.*?>/g, '').replace(/<\/svg>/g, '');
+			icon = icon;
 		} else {
 			viewBox = '0 0 24 24';
 			viewBox = viewBox;
 
-			iconName = iconObj[name]['path'];
-			iconName = iconName;
+			icon = iconObj[name]['path'].replace(/<svg.*?>/g, '').replace(/<\/svg>/g, '');
+			icon = icon;
 		}
 	}
 
+	// Render the icon
 	function renderIcon(iconObj: Icon): void {
 		if (iconObj.hasOwnProperty(name)) {
 			viewBox = mini ? '0 0 20 20' : '0 0 24 24';
 			viewBox = viewBox;
 
-			iconName = iconObj[name]['path'];
-			iconName = iconName;
+			// Remove fill, stroke-width, and stroke attributes
+			icon = iconObj[name]['path']
+				.replace(/<svg.*?>/g, '')
+				.replace(/<\/svg>/g, '')
+				.replace(/fill=".*?"/g, '')
+				.replace(/stroke-width=".*?"/g, '')
+				.replace(/stroke=".*?"/g, '');
+			icon = icon;
 		}
 	}
 
+	// Set the stroke and fill based on the mode
 	function runIconMode(): void {
 		if (outline) {
 			setStrokeWidth = $defaultStrokeWidth;
@@ -187,22 +212,35 @@
 		}
 	}
 
-	// classes
+	// Convert the name to title case
+	function titleCase(str: string) {
+		return str
+			.split('-')
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+	}
+
+	// Set the default size classes
 	$: defaultSizesClasses = !mini ? $regularSize : $miniSize;
 	$: isdefaultSizes = $defaultSizes === true ? defaultSizesClasses : '';
+
+	// Set the base classes
 	$: baseClasses =
 		noDefaultSize === true ? $$props.class ?? '' : `${isdefaultSizes} ${$$props.class ?? ''}`;
 </script>
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	{...$$restProps}
 	{fill}
 	{viewBox}
 	{stroke}
 	stroke-width={strokeWidth ? strokeWidth : setStrokeWidth}
-	preserveAspectRatio="xMidYMid meet"
-	class={baseClasses}
+	class={twMerge(baseClasses)}
+	role="img"
+	aria-label={titleCase(name)}
+	aria-hidden="true"
+	focusable="false"
+	{...$$restProps}
 >
-	{@html iconName}
+	{@html icon}
 </svg>

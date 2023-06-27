@@ -4572,7 +4572,6 @@ export const mainMini: Icon = {
 };
 
 // loading icons
-
 export const loadingIcons: Icon = {
 	'loading-circle': {
 		source: 'iconkit',
