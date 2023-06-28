@@ -1,3 +1,8 @@
+## [1.3.2](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.2) (2023-06-28)
+
+### Bug Fixes
+
+- add tailwind-merge to dependencies ([38b2390](https://github.com/liquidiqq/iconkit/commit/38b2390df8fe57f7f02ca9896a6380b95fe9716a))
 ## [1.3.1](https://github.com/liquidiqq/iconkit/compare/v1.3.0...v1.3.1) (2023-06-28)
 
 ### Features
