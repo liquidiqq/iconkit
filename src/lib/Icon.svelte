@@ -22,9 +22,15 @@
 		miniSize,
 		defaultSizes
 	} from './icons';
-	import type { Icon } from './icons';
-	import type { IconName } from './iconname-type-setup';
 
+	import type { Icon } from './icons';
+
+	import type { iconNames } from './icon-name-types';
+
+	import type { customIconTypeSafety } from '../../../../src/iconkit-icons';
+
+	// prettier-ignore
+	type IconName = typeof iconNames[number] | typeof customIconTypeSafety[number] & {};
 	export let name: IconName;
 
 	let icon: string;
