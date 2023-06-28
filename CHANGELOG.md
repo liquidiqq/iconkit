@@ -1,3 +1,8 @@
+## [1.3.4](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.4) (2023-06-28)
+
+### Bug Fixes
+
+- fix icon type safety and auto-completion ([951f288](https://github.com/liquidiqq/iconkit/commit/951f2888cc61e86e2d2a4c175df468ab91168d32))
 ## [1.3.2](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.2) (2023-06-28)
 
 ### Bug Fixes
