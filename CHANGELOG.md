@@ -1,3 +1,8 @@
+## [1.3.5](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.5) (2023-07-03)
+
+### Bug Fixes
+
+- native icons accept auto-completion ([51c5bb5](https://github.com/liquidiqq/iconkit/commit/51c5bb5c5cf87d8522edb0b25047c2086a23590d))
 ## [1.3.4](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.4) (2023-06-28)
 
 ### Bug Fixes
