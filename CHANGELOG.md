@@ -1,3 +1,6 @@
+## [1.3.6](https://github.com/liquidiqq/iconkit/compare/v1.3.5...v1.3.6) (2023-07-03)
+
+- code clean up ([bbd84ae](https://github.com/liquidiqq/iconkit/commit/bbd84ae3d7f1fdc3f58aac2fb3bb012a7e3aeef6))
 ## [1.3.5](https://github.com/liquidiqq/iconkit/compare/v1.3.1...v1.3.5) (2023-07-03)
 
 ### Bug Fixes
