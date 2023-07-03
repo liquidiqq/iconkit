@@ -28,11 +28,11 @@ Community icons for the Svelte ecosystem.
 
 ## About
 
-Iconkit is meant to be used with Svelte or SvelteKit. It's a collection of community icons from different sources, including [Heroicons](https://heroicons.com/), [Ionicons](https://ionicons.com/) brand logos, and icons made by Iconkit.
+Iconkit is a treeshakale Svelte/SvelteKit library. It's a collection of community icons from different sources, including [Heroicons](https://heroicons.com/), [Ionicons'](https://ionicons.com/) brand logos, and icons made by Iconkit.
 
 ## Features
 
-- Heroicons and Ionicons brand logos out of the box
+- Heroicons and Ionicons' brand logos out of the box
 - Add your svg logos, and custom icons in three modes: `outline`, `solid`, and `mini`
 - Full tree-shaking (only used icons are bundled)
 - Works with or without Tailwindcss
@@ -41,7 +41,9 @@ Iconkit is meant to be used with Svelte or SvelteKit. It's a collection of commu
 
 ## Getting started
 
-### Install via CLI
+### Install via CLI (recommended)
+
+```bash
 
 ```bash
 npx iconkit-cli
@@ -61,7 +63,7 @@ The CLI will install Iconkit, add the required classes, and import them to your 
 
 <br />
 
-### Install manually (skipping the CLI)
+### Install manually (skipping the CLI, not recommended)
 
 #### step 1. Install Iconkit:
 ```bash
@@ -261,7 +263,7 @@ If you have your own theme classes for sizing, assign them to `$regularSize` and
 ```
 
 ```css
-/* your theme.css or app.css */
+/* your theme.css or app.css/postcss */
 
   .your-theme-regular-size {
     height: 2.5rem;
@@ -273,29 +275,6 @@ If you have your own theme classes for sizing, assign them to `$regularSize` and
   }
 ```
 
-To disable global sizing for all icons, set `$defaultSizes` store to `false`, however, you will have to manually set the size for each icon which is not recommended as it can lead to inconsisent styling, but the option is there if you need it:
-
-> **Warning**
-> Not advised, instead, define your own classes for $regularSize and $miniSize.
-
-```html
-<script>
-  import { defaultSizes } from '@liquidiqq/iconkit'
-
-  $defaultSizes = false
-</script>
-```
-
-It is not recommended to disable the default sizes, instead, define your own classes for `$regularSize` and `$miniSize`:
-
-```html
-<script>
-  import { regularSize, miniSize } from '@liquidiqq/iconkit'
-
-  $regularSize = "custom-regular-size"
-  $miniSize = "custom-mini-size"
-</script>
-```
 
 #### Single icon sizing
 
@@ -372,7 +351,7 @@ To change the stroke width of a single loading icon, use the `strokeWidth` prop,
 ### Custom icon sets
 Iconkit offers 2 types of sets for users to add custom icons, `brand` and `extra` sets. Each type has 4 variants, the `default` variant, and the `outline`, `solid`, and `mini` variants.
 
-The default variant is flexible. It takes any size and color, giving you the ability to add compex logos and icons in your app.
+The default variant is flexible. It takes any size and color, giving you the ability to add complex logos and icons in your app.
 
 The other 3 variants `outline`, `solid`, and `mini` follow a strict API. They need to adhere to `24x24` and `20x20` in dimentions. It has the default color of `currentColor`. These properties are meant to be configured via the global [props](https://github.com/liquidiqq/iconkit#props). Check the docs for more on [props](https://github.com/liquidiqq/iconkit#props).
 
@@ -383,7 +362,7 @@ The other 3 variants `outline`, `solid`, and `mini` follow a strict API. They ne
   - any color, flat or gradient
 
 **2- Outline, solid, and mini variants:** is recommended for:
-  - UI development
+  - UI development (similar to the icons shipped with Iconkit)
   - strict size of `24x24` and `20x20` (for mini)
   - color is set to `currentColor` by default, configurable via the global [props](https://github.com/liquidiqq/iconkit#props)
 
@@ -501,9 +480,9 @@ Then in your `+page.svelte` or `component.svelte`:
 ### Anatomy of custom icon sets
 
 ```js
-brandIcons.set({  //	icon set name, `brandIcons` `extraMini` etc
+brandIcons.set({        // icon set name, `brandIcons` `extraMini` etc
 	"your-brand-name": {  // icon name, recommended naming convention: kebab-case, e.g. "brand", "brand-colored", "brand-main"
-		viewBox: "",  // required only if your icon is not 24x24 e.g. "0 0 22 113", if it's 24x24, don't need to add this property
+		viewBox: "",        // required only if your icon is not 24x24 e.g. "0 0 22 113", if it's 24x24, don't need to add this property
 		path: `paste here`  // paste your svg data inside the backticks
 	}
 })
@@ -534,7 +513,7 @@ brandIcons.set({
 })
 ```
 
-To make it more readable, you can put them in one line and turn on `word-wrap` with `alt+z` in vscode:
+To make svg data more readable, you can put them in one line and turn on `word-wrap` with `alt+z` in vscode:
 
 ```js
 brandIcons.set({
