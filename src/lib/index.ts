@@ -19,3 +19,5 @@ export {
 	regularSize,
 	miniSize
 } from './icons';
+
+export { customTypes } from './config';

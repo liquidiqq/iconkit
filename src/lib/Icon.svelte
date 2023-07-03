@@ -24,14 +24,10 @@
 	} from './icons';
 
 	import type { Icon } from './icons';
-
 	import type { iconNames } from './icon-name-types';
 
-	import type { customIconTypeSafety } from '../../../../src/iconkit-icons';
-
-	// prettier-ignore
-	type IconName = typeof iconNames[number] | typeof customIconTypeSafety[number] & {};
-	export let name: IconName;
+	type IconName = (typeof iconNames)[number] | (string & {});
+	export let name!: IconName;
 
 	let icon: string;
 	let stroke: string | undefined = undefined;

@@ -4,6 +4,7 @@ node_modules
 /.svelte-kit
 /package
 /dist
+iconkit-icons.js
 iconkit-icons.ts
 iconkit-icons.d.ts
 /src/routes
