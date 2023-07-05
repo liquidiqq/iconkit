@@ -47,6 +47,10 @@
 
 	let viewBox: string;
 
+	$: {
+		name, icon, strokeWidth, mode, viewBox;
+	}
+
 	let loading: boolean = false;
 
 	// Store icons
